@@ -1,12 +1,37 @@
+//
+// module.exports = function(sequelize, DataTypes) {
+//   var Burger = sequelize.define("burger", {
+//     id: DataTypes.INTEGER,
+//     burger_name: DataTypes.STRING,
+//     devoured: DataTypes.STRING
+//
+//     //,date_created: DataTypes.DATETIME
+//   });
+//   return Burger;
+// };
+var sequelize = require("sequelize");
+
 module.exports = function(sequelize, DataTypes) {
   var Burger = sequelize.define("Burger", {
-    burger_name: DataTypes.STRING,
-    devoured: DataTypes.STRING,
-    date_created: DataTypes.TIMESTAMP
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    burger_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    devoured: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    date_created: {
+      type: DataTypes.TIMESTAMP
+    }
   });
   return Burger;
-
-
 };
 
 Burger.sync();
