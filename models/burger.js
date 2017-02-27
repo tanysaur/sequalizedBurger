@@ -9,10 +9,9 @@
 //   });
 //   return Burger;
 // };
-var sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
-  var Burger = sequelize.define("Burger", {
+  var Burger = sequelize.define("burger", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -21,20 +20,25 @@ module.exports = function(sequelize, DataTypes) {
     },
     burger_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     devoured: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: false
     },
     date_created: {
-      type: DataTypes.TIMESTAMP
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    date_updated:{
+      allowNull: false,
+      type: DataTypes.DATE
     }
   });
   return Burger;
 };
 
-Burger.sync();
+
 
 //
 // // This may be confusing but here Sequelize (capital) references the standard library
