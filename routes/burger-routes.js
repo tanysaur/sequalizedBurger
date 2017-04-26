@@ -15,7 +15,11 @@ module.exports = function(app) {
 
   // GET route for getting all of the todos
   app.get("/burgers", function(req, res) {
-
+        db.Burger.findAll().then(function (data) {
+            var obj = {burgers: data}
+            console.log(obj);
+            res.render('index', obj)
+        });
   });
 
   // POST route for saving a new todo. You can create a todo using the data on req.body
@@ -23,7 +27,11 @@ module.exports = function(app) {
     db.Burger.create({'burger_name': req.body.burger_name})
       .then(function(dbBurger) {
         res.redirect('/burgers')
-    });
+      })
+		  .catch(function(err) {
+			  res.json(err);
+		  });
+	  ;
   });
 
   // DELETE route for deleting todos. You can access the todo's id in req.params.id
@@ -39,7 +47,7 @@ module.exports = function(app) {
 
   // PUT route for updating todos. The updated todo will be available in req.body
   app.put("/burgers/update/:id", function(req, res) {
-
+	  res.send(404);
   });
 };
 
