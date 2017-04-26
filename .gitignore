@@ -40,3 +40,5 @@ node_modules
 
 config/connection.js
 connection.js
+
+.DS_Store
