@@ -11,7 +11,7 @@
 // };
 
 module.exports = function(sequelize, DataTypes) {
-  var Burger = sequelize.define("burger", {
+  var Burger = sequelize.define("Burger", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -28,11 +28,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     date_created: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+	  defaultValue: Date.now
     },
     date_updated:{
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+	  defaultValue: Date.now
     }
   });
   return Burger;
